@@ -1,0 +1,44 @@
+swiftconvert-laravel/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── ConverterController.php  # Mengontrol logika halaman depan & konversi
+│   │   │   └── Admin/
+│   │   │       ├── DashboardController.php # Controller untuk dashboard admin
+│   │   │       └── HistoryController.php   # Controller untuk menampilkan riwayat konversi di admin
+│   │   ├── Middleware/
+│   │   │   └── AdminMiddleware.php     # Middleware untuk melindungi route admin (memastikan hanya admin yg bisa akses)
+│   ├── Models/
+│   │   └── ConversionHistory.php   # Model Eloquent untuk tabel riwayat konversi di database
+├── config/
+│   └── filesystems.php         # Konfigurasi lokasi penyimpanan file (uploads, converted)
+├── database/
+│   ├── migrations/
+│   │   └── [timestamp]_create_conversion_histories_table.php # File migrasi untuk membuat tabel riwayat di DB
+├── public/                     # Folder root yang diakses web server
+│   ├── css/                    # File CSS hasil kompilasi (jika pakai Vite/Mix)
+│   ├── js/                     # File JS hasil kompilasi (jika pakai Vite/Mix)
+│   └── index.php               # Entry point aplikasi Laravel
+├── resources/
+│   ├── css/                    # Source file CSS/SCSS
+│   ├── js/                     # Source file JavaScript (app.js, bootstrap.js, dll)
+│   ├── views/
+│   │   ├── layouts/
+│   │   │   ├── app.blade.php       # Layout utama untuk halaman depan (user)
+│   │   │   └── admin.blade.php     # Layout utama untuk halaman admin
+│   │   ├── converter/
+│   │   │   └── index.blade.php     # Tampilan utama halaman konverter (form upload, tutorial, notif)
+│   │   ├── admin/
+│   │   │   ├── dashboard.blade.php # Tampilan dashboard admin
+│   │   │   └── history/
+│   │   │       └── index.blade.php # Tampilan tabel riwayat konversi di admin
+│   │   └── partials/             # (Opsional) Folder untuk potongan view yg bisa dipakai ulang
+│   │       ├── _tutorial.blade.php # Potongan view untuk bagian tutorial
+│   │       └── _notification.blade.php# Potongan view untuk notifikasi/arahan
+├── routes/
+│   └── web.php                 # Tempat mendefinisikan semua URL/route aplikasi web
+├── storage/app/public/         # Lokasi penyimpanan file publik default (perlu di-link)
+│   ├── uploads/                # Folder untuk menyimpan file yang diupload user
+│   └── converted/              # Folder untuk menyimpan file hasil konversi
+├── .env                        # File konfigurasi environment (koneksi DB, URL aplikasi, dll)
+└── composer.json               # Daftar dependensi PHP (termasuk Laravel & library lain)

@@ -1,0 +1,99 @@
+/* resources/css/app.css */
+
+/* 1. Import Tailwind CSS directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 2. Custom Styles (bisa di dalam @layer jika ingin integrasi lebih dalam dengan Tailwind) */
+
+/* Styling tambahan untuk file input kustom */
+.file-input-wrapper {
+    @apply border border-gray-600 dark:border-slate-600 bg-gray-700 dark:bg-slate-700/50 hover:border-indigo-500 dark:hover:border-indigo-500 transition duration-150 ease-in-out rounded-md p-2 flex items-center cursor-pointer;
+}
+
+.file-input-button {
+     @apply bg-gray-600 dark:bg-slate-600 border border-gray-500 dark:border-slate-500 text-gray-200 dark:text-gray-200 hover:bg-gray-500 dark:hover:bg-slate-500 px-3 py-1 rounded-md mr-3 whitespace-nowrap text-sm font-medium transition duration-150 ease-in-out;
+}
+
+.file-input-text {
+    @apply text-gray-400 dark:text-gray-400 text-sm overflow-hidden text-ellipsis whitespace-nowrap flex-grow;
+}
+
+/* Style sederhana untuk spinner */
+.spinner-border {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    vertical-align: text-bottom;
+    border: .2em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spinner-border .75s linear infinite;
+    margin-right: 0.5rem; /* Jarak dengan teks */
+}
+
+@keyframes spinner-border {
+    to { transform: rotate(360deg); }
+}
+
+/* Styling tabel dasar di Admin (contoh, bisa juga full Tailwind di Blade) */
+.table {
+    @apply w-full border-collapse;
+}
+.table th, .table td {
+    @apply border border-gray-200 dark:border-gray-600 p-2 text-left text-sm align-top; /* align-top agar rapi */
+}
+.table th {
+    @apply bg-gray-100 dark:bg-gray-700 font-semibold whitespace-nowrap; /* No wrap header */
+}
+.table tbody tr:nth-child(even) {
+    @apply bg-gray-50 dark:bg-slate-800/50; /* Sedikit beda warna */
+}
+.table tbody tr:hover {
+     @apply bg-gray-100 dark:bg-slate-700/60; /* Efek hover */
+}
+
+/* Styling pagination dasar (jika menggunakan view vendor.pagination.tailwind) */
+.pagination nav > div:first-child {
+    @apply mb-2 text-sm text-gray-600 dark:text-gray-400; /* Info "Showing X to Y..." */
+}
+.pagination nav > div:last-child > div {
+    @apply inline-flex shadow-sm rounded-md -space-x-px; /* Grup tombol */
+}
+.pagination nav a, .pagination nav span {
+     @apply relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white dark:bg-gray-800 dark:border-gray-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition ease-in-out duration-150;
+}
+.pagination nav span[aria-current="page"] span {
+    @apply z-10 bg-indigo-50 border-indigo-500 text-indigo-600 dark:bg-indigo-900 dark:border-indigo-700 dark:text-indigo-300; /* Halaman aktif */
+}
+.pagination nav span[aria-disabled="true"] span {
+    @apply text-gray-400 dark:text-gray-500 bg-gray-100 dark:bg-gray-700 cursor-not-allowed; /* Tombol nonaktif */
+}
+/* Styling untuk tombol prev/next nonaktif (jika ada ikon) */
+.pagination nav a[rel="prev"][aria-disabled="true"],
+.pagination nav a[rel="next"][aria-disabled="true"] {
+     @apply text-gray-400 dark:text-gray-500 bg-gray-100 dark:bg-gray-700 cursor-not-allowed;
+}
+.pagination nav a:first-child, .pagination nav span:first-child span {
+    @apply rounded-l-md;
+}
+.pagination nav a:last-child, .pagination nav span:last-child span {
+     @apply rounded-r-md;
+}
+
+/* Style untuk pointer dropdown select agar terlihat di dark mode */
+select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+     /* Pastikan appearance di-reset jika menggunakan plugin @tailwindcss/forms */
+    /* appearance: none; */
+}
+.dark select {
+     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+}
+
+/* Tambahkan CSS kustom lainnya di sini jika Anda butuhkan */
